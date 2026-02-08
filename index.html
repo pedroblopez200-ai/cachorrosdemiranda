@@ -10,26 +10,90 @@
         @keyframes pop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .animate-pop { animation: pop 0.3s ease-out; }
         
-        /* Efecto de brillo para las fotos de los niños */
-        .player-photo-container { position: relative; overflow: hidden; border-radius: 1rem; }
-        .player-photo-container::after {
-            content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: rotate(45deg); animation: shine 3s infinite;
+        /* Animación vibrante para el BIENVENIDOS */
+        @keyframes vibrar {
+            0% { transform: scale(1); text-shadow: 0 0 10px rgba(249, 115, 22, 0.5); }
+            50% { transform: scale(1.05); text-shadow: 0 0 30px rgba(249, 115, 22, 0.8); }
+            100% { transform: scale(1); text-shadow: 0 0 10px rgba(249, 115, 22, 0.5); }
         }
-        @keyframes shine { 0% { left: -100%; } 100% { left: 100%; } }
+        .bienvenido-vibrante {
+            animation: vibrar 2s infinite ease-in-out;
+        }
 
         html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="bg-slate-900 text-white font-sans">
 
+    <header class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-900 via-slate-900 to-slate-900 p-6 text-center">
+        <h1 class="bienvenido-vibrante text-7xl md:text-8xl font-black italic uppercase tracking-tighter text-orange-500 mb-2">
+            BIENVENIDOS
+        </h1>
+        
+        <div class="flex items-center gap-4 mb-8">
+            <div class="h-[2px] w-12 bg-white/20"></div>
+            <h2 class="text-2xl font-bold uppercase tracking-[0.2em] text-white">Cachorros de Miranda</h2>
+            <div class="h-[2px] w-12 bg-white/20"></div>
+        </div>
+
+        <a href="#menu" class="group relative px-12 py-5 bg-white text-blue-900 font-black rounded-full uppercase tracking-widest text-sm hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+            Entrar al Club
+        </a>
+    </header>
+
+    <nav id="menu" class="py-16 px-6 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="#identidad" class="bg-slate-800 p-8 rounded-3xl border-b-4 border-blue-500 hover:bg-blue-600 transition-all text-center group">
+            <span class="block text-3xl mb-2 group-hover:scale-125 transition">📖</span>
+            <h4 class="font-black uppercase italic">Historia</h4>
+        </a>
+        <a href="#identidad" class="bg-slate-800 p-8 rounded-3xl border-b-4 border-orange-500 hover:bg-orange-500 transition-all text-center group">
+            <span class="block text-3xl mb-2 group-hover:scale-125 transition">🚀</span>
+            <h4 class="font-black uppercase italic">Misión y Visión</h4>
+        </a>
+        <a href="#roster" class="bg-slate-800 p-8 rounded-3xl border-b-4 border-green-500 hover:bg-green-600 transition-all text-center group">
+            <span class="block text-3xl mb-2 group-hover:scale-125 transition">⚾</span>
+            <h4 class="font-black uppercase italic">Roster</h4>
+        </a>
+    </nav>
+
+    <section id="identidad" class="py-20 px-6 max-w-4xl mx-auto space-y-12">
+        <div class="text-center bg-slate-800/50 p-10 rounded-[3rem] border border-white/5">
+            <h3 class="text-4xl font-black italic uppercase mb-6 text-blue-400">Nuestra Historia</h3>
+            <p class="text-slate-300 leading-relaxed text-lg italic">
+                "Formando las futuras estrellas del béisbol venezolano con disciplina, pasión y familia."
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="p-8 border-l-4 border-blue-500 bg-slate-800/30 rounded-r-3xl">
+                <h4 class="text-xl font-black uppercase italic text-blue-400 mb-2">Misión</h4>
+                <p class="text-slate-400 text-sm">Desarrollar el talento técnico y humano de nuestros niños a través del béisbol menor.</p>
+            </div>
+            <div class="p-8 border-l-4 border-orange-500 bg-slate-800/30 rounded-r-3xl">
+                <h4 class="text-xl font-black uppercase italic text-orange-400 mb-2">Visión</h4>
+                <p class="text-slate-400 text-sm">Ser la organización referente en Miranda, reconocida por la calidad de sus atletas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="roster" class="py-20">
+        <div class="max-w-md mx-auto px-4">
+            <div class="bg-slate-800 rounded-3xl shadow-2xl border-l-8 border-orange-500 overflow-hidden">
+                <div class="p-6 border-b border-slate-700">
+                    <h2 class="text-orange-400 text-2xl font-black uppercase italic">Roster Oficial</h2>
+                </div>
+                <table class="w-full">
+                    <tbody id="lista-jugadores" class="divide-y divide-slate-700 bg-slate-700/20">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
     <div id="playerModal" class="modal flex items-center justify-center p-4" onclick="this.style.display='none'">
         <div class="bg-white text-gray-800 rounded-3xl overflow-hidden max-w-sm w-full shadow-2xl animate-pop" onclick="event.stopPropagation()">
             <div class="bg-blue-900 p-8 flex justify-center border-b-8 border-orange-500">
-                <div class="player-photo-container">
-                    <img id="p-img" src="logo.png" class="w-48 h-48 object-cover bg-slate-200 border-4 border-white shadow-xl">
-                </div>
+                <img id="p-img" src="logo.png" class="w-48 h-48 object-cover rounded-2xl border-4 border-white shadow-xl">
             </div>
             <div class="p-6 text-center">
                 <h3 id="p-nombre" class="text-3xl font-black text-blue-900 uppercase italic">Nombre</h3>
@@ -38,93 +102,40 @@
                     <div class="border-r border-gray-100"><p class="text-[10px] text-gray-400 font-black uppercase">Edad</p><p id="p-edad" class="font-black text-2xl text-blue-900">--</p></div>
                     <div><p class="text-[10px] text-gray-400 font-black uppercase">Posiciones</p><p id="p-pos" class="font-black text-lg text-blue-900 leading-tight">--</p></div>
                 </div>
-                <button onclick="document.getElementById('playerModal').style.display='none'" class="w-full bg-slate-800 text-white py-4 rounded-xl font-black uppercase text-xs">Cerrar Ficha</button>
+                <button onclick="document.getElementById('playerModal').style.display='none'" class="w-full bg-slate-800 text-white py-4 rounded-xl font-black">Cerrar</button>
             </div>
         </div>
     </div>
 
-    <header class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-950 to-slate-900 p-6 text-center border-b-8 border-orange-500">
-        <img src="logo.png" class="w-40 h-40 mb-6 drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] animate-bounce">
-        <h1 class="text-5xl font-black italic uppercase tracking-tighter mb-2">Cachorros <span class="text-orange-500 text-6xl block">de Miranda</span></h1>
-        <p class="text-slate-400 max-w-xs mx-auto mb-8 font-medium">Formando las futuras estrellas del béisbol venezolano con disciplina y pasión.</p>
-        <div class="flex flex-col gap-3 w-full max-w-xs">
-            <a href="#historia" class="bg-orange-500 text-white font-black py-4 rounded-full uppercase tracking-widest hover:bg-orange-600 transition shadow-lg">Nuestra Historia</a>
-            <a href="#roster" class="bg-blue-600 text-white font-black py-4 rounded-full uppercase tracking-widest hover:bg-blue-700 transition shadow-lg">Ver Roster</a>
-        </div>
-    </header>
-
-    <section id="historia" class="py-20 px-6 max-w-4xl mx-auto space-y-16">
-        <div class="text-center">
-            <h2 class="text-orange-500 text-xs font-black tracking-[0.3em] uppercase mb-4">Sobre Nosotros</h2>
-            <h3 class="text-4xl font-black italic uppercase mb-6 text-blue-400">Historia</h3>
-            <p class="text-slate-300 leading-relaxed text-lg">
-                Fundado con el sueño de brindar un espacio de desarrollo integral, Cachorros de Miranda ha crecido como una familia donde el béisbol es la herramienta para formar ciudadanos ejemplares. Desde nuestros inicios en los campos locales, hemos mantenido el compromiso de la excelencia deportiva.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-slate-800 p-8 rounded-3xl border-t-4 border-blue-500 shadow-xl">
-                <h4 class="text-xl font-black uppercase italic text-blue-400 mb-4">Misión</h4>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Desarrollar el talento técnico y humano de nuestros niños, fomentando valores como el respeto, el trabajo en equipo y la perseverancia a través del béisbol menor.
-                </p>
-            </div>
-            <div class="bg-slate-800 p-8 rounded-3xl border-t-4 border-orange-500 shadow-xl">
-                <h4 class="text-xl font-black uppercase italic text-orange-400 mb-4">Visión</h4>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Ser la organización de béisbol menor referente en el estado Miranda, reconocida por la calidad de sus atletas y la solidez de sus valores familiares.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="roster" class="py-20 bg-slate-900">
-        <div class="max-w-md mx-auto px-4">
-            <div class="bg-slate-800 rounded-3xl shadow-2xl border-l-8 border-orange-500 overflow-hidden text-left">
-                <div class="p-6 bg-slate-800/50 border-b border-slate-700">
-                    <h2 class="text-orange-400 text-2xl font-black uppercase italic leading-none">Roster Oficial</h2>
-                    <p class="text-slate-500 text-[10px] uppercase font-bold tracking-widest mt-2 font-bold">Temporada 2026</p>
-                </div>
-                <table class="w-full">
-                    <tbody class="divide-y divide-slate-700 bg-slate-700/20">
-                        <script>
-                            const jugadores = [
-                                {n: 'Abrían Sánchez', e: '9 Años', p: 'CF / 1B / P', f: 'abrian.png'},
-                                {n: 'Andruth Garcia', e: '8 Años', p: '2B / SS / LF / P', f: 'andruth.png'},
-                                {n: 'Dirimo Montero', e: '11 Años', p: '3B / 2B / P', f: 'dirimo.png'},
-                                {n: 'Jensen Sandrea', e: '11 Años', p: 'SS / P', f: 'jensen.png'},
-                                {n: 'Joshua Cova', e: '7 Años', p: 'RF / 2B / P', f: 'joshua.png'},
-                                {n: 'Juan Flores', e: '11 Años', p: '1B / C / 3B', f: 'juan.png'},
-                                {n: 'Luciander Valero', e: '8 Años', p: 'LF / 1B / P', f: 'luciander.png'},
-                                {n: 'Lyan Olivares', e: '11 Años', p: '2B / P', f: 'lyan.png'},
-                                {n: 'Martin López', e: '7 Años', p: 'P / 3B', f: 'martin.png'},
-                                {n: 'Sandith Garcia', e: '10 Años', p: 'C / P / CF', f: 'sandith.png'},
-                                {n: 'Thomas Narváez', e: '9 Años', p: 'RF / LF', f: 'thomas.png'},
-                                {n: 'Victor Gutiérrez', e: '9 Años', p: 'P / 1B / CF', f: 'victor.png'}
-                            ];
-                            
-                            jugadores.forEach(j => {
-                                document.write(`
-                                    <tr class="active:bg-blue-900 transition-colors cursor-pointer border-b border-slate-700/50" onclick="verJugador('${j.n}', '${j.e}', '${j.p}', '${j.f}')">
-                                        <td class="p-5 font-black text-orange-500 italic text-sm">#</td>
-                                        <td class="p-5 uppercase font-bold text-white tracking-wide text-sm">${j.n}</td>
-                                        <td class="p-5 text-right text-orange-500 opacity-50 text-xl">➔</td>
-                                    </tr>
-                                `);
-                            });
-                        </script>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <footer class="p-10 text-center text-slate-600 text-xs uppercase tracking-[0.2em] font-bold">
-        &copy; 2026 Cachorros de Miranda B.B.C. <br>
-        <span class="text-orange-500/50 block mt-2">El futuro del béisbol está aquí</span>
-    </footer>
-
     <script>
+        const jugadores = [
+            {n: 'Abrían Sánchez', e: '9 Años', p: 'CF / 1B / P', f: 'abrian.png'},
+            {n: 'Andruth Garcia', e: '8 Años', p: '2B / SS / LF / P', f: 'andruth.png'},
+            {n: 'Dirimo Montero', e: '11 Años', p: '3B / 2B / P', f: 'dirimo.png'},
+            {n: 'Jensen Sandrea', e: '11 Años', p: 'SS / P', f: 'jensen.png'},
+            {n: 'Joshua Cova', e: '7 Años', p: 'RF / 2B / P', f: 'joshua.png'},
+            {n: 'Juan Flores', e: '11 Años', p: '1B / C / 3B', f: 'juan.png'},
+            {n: 'Luciander Valero', e: '8 Años', p: 'LF / 1B / P', f: 'luciander.png'},
+            {n: 'Lyan Olivares', e: '11 Años', p: '2B / P', f: 'lyan.png'},
+            {n: 'Martin López', e: '7 Años', p: 'P / 3B', f: 'martin.png'},
+            {n: 'Sandith Garcia', e: '10 Años', p: 'C / P / CF', f: 'sandith.png'},
+            {n: 'Thomas Narváez', e: '9 Años', p: 'RF / LF', f: 'thomas.png'},
+            {n: 'Victor Gutiérrez', e: '9 Años', p: 'P / 1B / CF', f: 'victor.png'}
+        ];
+
+        const tbody = document.getElementById('lista-jugadores');
+        jugadores.forEach(j => {
+            const tr = document.createElement('tr');
+            tr.className = "active:bg-blue-900 transition-colors cursor-pointer";
+            tr.onclick = () => verJugador(j.n, j.e, j.p, j.f);
+            tr.innerHTML = `
+                <td class="p-5 font-black text-orange-500 italic">#</td>
+                <td class="p-5 uppercase font-bold text-white tracking-wide">${j.n}</td>
+                <td class="p-5 text-right text-orange-500 opacity-50 text-xl">➔</td>
+            `;
+            tbody.appendChild(tr);
+        });
+
         function verJugador(nombre, edad, posicion, foto) {
             document.getElementById('p-nombre').innerText = nombre;
             document.getElementById('p-edad').innerText = edad;
