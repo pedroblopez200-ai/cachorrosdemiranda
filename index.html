@@ -5,69 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cachorros de Miranda B.B.C.</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        function enviarWhatsApp() {
-            const nombre = document.getElementById('nombre').value;
-            const telefono = document.getElementById('tel').value;
-            const miNumero = "584120000000"; // <-- ¡RECUERDA PONER TU NÚMERO AQUÍ!
-            
-            if(nombre && telefono) {
-                const mensaje = `¡Hola! Quiero inscribir a ${nombre}. Mi contacto es ${telefono}.`;
-                window.open(`https://wa.me/${miNumero}?text=${encodeURIComponent(mensaje)}`, '_blank');
-            } else {
-                alert("Por favor, llena ambos campos.");
-            }
-        }
-    </script>
+    <style>
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
+    </style>
 </head>
 <body class="bg-slate-900 text-white font-sans text-center">
-    <nav class="bg-blue-900 p-4 border-b-4 border-orange-500 sticky top-0 z-50 shadow-2xl">
+
+    <div id="playerModal" class="modal flex items-center justify-center p-4" onclick="this.style.display='none'">
+        <div class="bg-white text-gray-800 rounded-3xl overflow-hidden max-w-sm w-full shadow-2xl animate-scale-up" onclick="event.stopPropagation()">
+            <div class="bg-blue-900 p-6 flex justify-center">
+                <img id="p-img" src="logo.png" class="w-32 h-32 rounded-full border-4 border-orange-500 shadow-lg object-cover bg-white">
+            </div>
+            <div class="p-6 text-center">
+                <h3 id="p-nombre" class="text-2xl font-black text-blue-900 uppercase italic">Nombre</h3>
+                <div class="flex justify-around my-4 border-y py-2 border-gray-100">
+                    <div><p class="text-xs text-gray-400 font-bold uppercase">Edad</p><p id="p-edad" class="font-black text-lg text-orange-500">--</p></div>
+                    <div><p class="text-xs text-gray-400 font-bold uppercase">Posición</p><p id="p-pos" class="font-black text-lg text-blue-900">--</p></div>
+                </div>
+                <button onclick="document.getElementById('playerModal').style.display='none'" class="bg-gray-200 text-gray-600 px-6 py-2 rounded-full font-bold text-sm">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bg-blue-900 p-4 border-b-4 border-orange-500 sticky top-0 z-50">
         <div class="container mx-auto flex flex-col items-center gap-2">
-            <img src="logo.png" alt="Logo" class="w-24 h-24 drop-shadow-lg rounded-full border-2 border-white">
-            <span class="text-xl font-black italic uppercase tracking-tighter">Cachorros de Miranda</span>
+            <img src="logo.png" alt="Logo" class="w-20 h-20 drop-shadow-lg rounded-full border-2 border-white">
+            <span class="text-xl font-black italic uppercase">Cachorros de Miranda</span>
         </div>
     </nav>
 
-    <section class="max-w-md mx-auto p-8 bg-white rounded-3xl my-6 shadow-2xl mx-4 text-gray-800 border-t-8 border-orange-500">
-        <h2 class="text-blue-900 text-2xl font-black mb-6 uppercase italic border-b-2 border-orange-500 pb-2">Inscripciones</h2>
-        <div class="space-y-4 text-left">
-            <input type="text" id="nombre" placeholder="Nombre del Jugador" class="w-full p-4 bg-gray-100 rounded-xl outline-none border-2 border-transparent focus:border-orange-500">
-            <input type="tel" id="tel" placeholder="Teléfono" class="w-full p-4 bg-gray-100 rounded-xl outline-none border-2 border-transparent focus:border-orange-500">
-            <button onclick="enviarWhatsApp()" class="w-full bg-orange-500 text-white font-black py-4 rounded-xl shadow-lg uppercase active:scale-95 transition-all">Enviar por WhatsApp</button>
-        </div>
-    </section>
-
     <section class="max-w-md mx-auto p-6 bg-slate-800 rounded-3xl my-6 shadow-2xl mx-4 border-l-8 border-orange-500">
         <h2 class="text-orange-400 text-2xl font-black mb-4 uppercase italic">Roster Oficial</h2>
+        <p class="text-[10px] text-gray-400 mb-4 italic uppercase">Toca un nombre para ver detalles</p>
         <div class="overflow-hidden rounded-xl">
             <table class="w-full text-left text-sm">
-                <thead class="bg-blue-900 text-white uppercase text-xs font-bold">
-                    <tr>
-                        <th class="p-3">#</th>
-                        <th class="p-3">Nombre del Jugador</th>
+                <tbody class="divide-y divide-slate-700 bg-slate-700">
+                    <tr class="active:bg-slate-600 cursor-pointer" onclick="verJugador('ABRÍAN SÁNCHEZ', '9 AÑOS', 'CF / 1B / P')">
+                        <td class="p-4 font-bold text-orange-400">#</td>
+                        <td class="p-4 uppercase font-bold tracking-tight">Abrían Sánchez</td>
+                        <td class="p-4 text-right">➔</td>
                     </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-700 bg-slate-700 text-gray-200">
-                    <tr><td class="p-3 font-bold text-orange-400">—</td><td class="p-3 uppercase">Abrían Sánchez</td></tr>
-                    <tr><td class="p-3 font-bold text-orange-400">—</td><td class="p-3 uppercase">Andruth Garcia</td></tr>
-                    <tr><td class="p-3 font-bold text-orange-400">—</td><td class="p-3 uppercase">Dirimo Montero</td></tr>
-                    <tr><td class="p-3 font-bold text-orange-400">—</td><td class="p-3 uppercase">Jensen Sandrea</td></tr>
-                    <tr><td class="p-3 font-bold text-orange-400">—</td><td class="p-3 uppercase">Joshua Cova</td></tr>
-                    <tr><td class="p-3 font-bold text-orange-400">—</td><td class="p-3 uppercase">Juan Flores</td></tr>
-                    <tr><td class="p-3 font-bold text-orange-400">—</td><td class="p-3 uppercase">Luciander Valero</td></tr>
-                    <tr><td class="p-3 font-bold text-orange-400">—</td><td class="p-3 uppercase">Lyan Olivares</td></tr>
-                    <tr><td class="p-3 font-bold text-orange-400">—</td><td class="p-3 uppercase">Martin López</td></tr>
-                    <tr><td class="p-3 font-bold text-orange-400">—</td><td class="p-3 uppercase">Sandith Garcia</td></tr>
-                    <tr><td class="p-3 font-bold text-orange-400">—</td><td class="p-3 uppercase">Thomas Narváez</td></tr>
-                    <tr><td class="p-3 font-bold text-orange-400">—</td><td class="p-3 uppercase">Victor Gutiérrez</td></tr>
+                    <tr class="active:bg-slate-600 cursor-pointer" onclick="verJugador('Andruth Garcia', '--', 'Por definir')">
+                        <td class="p-4 font-bold text-orange-400">#</td>
+                        <td class="p-4 uppercase">Andruth Garcia</td>
+                        <td class="p-4 text-right">➔</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <p class="mt-4 text-[10px] opacity-50 italic uppercase">* Lista actualizada oficialmente</p>
     </section>
 
-    <footer class="p-8 opacity-40 text-xs">
-        <p>Cachorros de Miranda B.B.C. &copy; 2026</p>
-    </footer>
+    <script>
+        function verJugador(nombre, edad, posicion) {
+            document.getElementById('p-nombre').innerText = nombre;
+            document.getElementById('p-edad').innerText = edad;
+            document.getElementById('p-pos').innerText = posicion;
+            document.getElementById('playerModal').style.display = 'flex';
+        }
+    </script>
 </body>
 </html>
