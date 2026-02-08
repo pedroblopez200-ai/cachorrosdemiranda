@@ -18,22 +18,28 @@
             <div class="bg-blue-900 p-8 flex justify-center border-b-4 border-orange-500">
                 <img id="p-img" src="logo.png" class="w-56 h-56 rounded-2xl shadow-2xl object-cover bg-slate-200">
             </div>
-            <div class="p-6 text-center">
-                <h3 id="p-nombre" class="text-3xl font-black text-blue-900 uppercase italic">Nombre</h3>
+            <div class="p-6">
+                <h3 id="p-nombre" class="text-3xl font-black text-blue-900 uppercase italic leading-tight">Nombre</h3>
                 <p class="text-orange-500 font-bold text-sm mb-4 tracking-widest uppercase italic">Cachorros de Miranda</p>
                 <div class="grid grid-cols-2 gap-4 border-y py-4 mb-6">
-                    <div class="border-r border-gray-100"><p class="text-[10px] text-gray-400 font-black uppercase">Edad</p><p id="p-edad" class="font-black text-2xl text-blue-900">--</p></div>
-                    <div><p class="text-[10px] text-gray-400 font-black uppercase">Posiciones</p><p id="p-pos" class="font-black text-lg text-blue-900 leading-tight">--</p></div>
+                    <div class="border-r border-gray-100 text-center">
+                        <p class="text-[10px] text-gray-400 font-black uppercase">Edad</p>
+                        <p id="p-edad" class="font-black text-2xl text-blue-900">--</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-[10px] text-gray-400 font-black uppercase">Posiciones</p>
+                        <p id="p-pos" class="font-black text-lg text-blue-900 leading-tight">--</p>
+                    </div>
                 </div>
                 <button onclick="document.getElementById('playerModal').style.display='none'" class="w-full bg-slate-100 text-slate-500 py-4 rounded-xl font-black uppercase text-xs">Cerrar</button>
             </div>
         </div>
     </div>
 
-    <nav class="bg-blue-900 p-4 border-b-4 border-orange-500 sticky top-0 z-50">
+    <nav class="bg-blue-900 p-4 border-b-4 border-orange-500 sticky top-0 z-50 shadow-xl">
         <div class="container mx-auto flex flex-col items-center gap-1">
             <img src="logo.png" class="w-16 h-16 rounded-full border-2 border-white shadow-md">
-            <span class="text-lg font-black italic uppercase tracking-tighter">Cachorros de Miranda</span>
+            <span class="text-lg font-black italic uppercase tracking-tighter text-white">Cachorros de Miranda</span>
         </div>
     </nav>
 
@@ -41,12 +47,36 @@
         <div class="bg-slate-800 rounded-3xl shadow-2xl border-l-8 border-orange-500 overflow-hidden text-left">
             <div class="p-6"><h2 class="text-orange-400 text-2xl font-black uppercase italic">Roster Oficial</h2></div>
             <table class="w-full">
-                <tbody class="divide-y divide-slate-700 bg-slate-700/50 text-white">
+                <tbody class="divide-y divide-slate-700 bg-slate-700/50">
                     <tr class="active:bg-blue-900 cursor-pointer" onclick="verJugador('Abrían Sánchez', '9 Años', 'CF / 1B / P', 'abrian.png')">
                         <td class="p-4 font-black text-orange-500">#</td>
-                        <td class="p-4 uppercase font-bold tracking-wide">Abrían Sánchez</td>
+                        <td class="p-4 uppercase font-bold text-white tracking-wide">Abrían Sánchez</td>
                         <td class="p-4 text-right text-orange-500">➔</td>
                     </tr>
+                    <tr class="active:bg-blue-900 cursor-pointer" onclick="verJugador('Andruth Garcia', '8 Años', '2B / SS / LF / P', 'andruth.png')">
+                        <td class="p-4 font-black text-orange-500">#</td>
+                        <td class="p-4 uppercase font-bold text-white tracking-wide">Andruth Garcia</td>
+                        <td class="p-4 text-right text-orange-500">➔</td>
+                    </tr>
+                    <tr class="active:bg-blue-900 cursor-pointer" onclick="verJugador('Dirimo Montero', '11 Años', '3B / 2B / P', 'dirimo.png')">
+                        <td class="p-4 font-black text-orange-500">#</td>
+                        <td class="p-4 uppercase font-bold text-white tracking-wide">Dirimo Montero</td>
+                        <td class="p-4 text-right text-orange-500">➔</td>
+                    </tr>
+                    <tr class="active:bg-blue-900 cursor-pointer" onclick="verJugador('Jensen Sandrea', '11 Años', 'SS / P', 'jensen.png')">
+                        <td class="p-4 font-black text-orange-500">#</td>
+                        <td class="p-4 uppercase font-bold text-white tracking-wide">Jensen Sandrea</td>
+                        <td class="p-4 text-right text-orange-500">➔</td>
+                    </tr>
+
+                    <tr class="active:bg-blue-900 cursor-pointer" onclick="verJugador('Joshua Cova', '--', 'Por definir', 'logo.png')"><td class="p-4 text-xs opacity-50">#</td><td class="p-4 uppercase text-white/70 italic">Joshua Cova</td><td class="p-4 text-right opacity-20">➔</td></tr>
+                    <tr class="active:bg-blue-900 cursor-pointer" onclick="verJugador('Juan Flores', '--', 'Por definir', 'logo.png')"><td class="p-4 text-xs opacity-50">#</td><td class="p-4 uppercase text-white/70 italic">Juan Flores</td><td class="p-4 text-right opacity-20">➔</td></tr>
+                    <tr class="active:bg-blue-900 cursor-pointer" onclick="verJugador('Luciander Valero', '--', 'Por definir', 'logo.png')"><td class="p-4 text-xs opacity-50">#</td><td class="p-4 uppercase text-white/70 italic">Luciander Valero</td><td class="p-4 text-right opacity-20">➔</td></tr>
+                    <tr class="active:bg-blue-900 cursor-pointer" onclick="verJugador('Lyan Olivares', '--', 'Por definir', 'logo.png')"><td class="p-4 text-xs opacity-50">#</td><td class="p-4 uppercase text-white/70 italic">Lyan Olivares</td><td class="p-4 text-right opacity-20">➔</td></tr>
+                    <tr class="active:bg-blue-900 cursor-pointer" onclick="verJugador('Martin López', '--', 'Por definir', 'logo.png')"><td class="p-4 text-xs opacity-50">#</td><td class="p-4 uppercase text-white/70 italic">Martin López</td><td class="p-4 text-right opacity-20">➔</td></tr>
+                    <tr class="active:bg-blue-900 cursor-pointer" onclick="verJugador('Sandith Garcia', '--', 'Por definir', 'logo.png')"><td class="p-4 text-xs opacity-50">#</td><td class="p-4 uppercase text-white/70 italic">Sandith Garcia</td><td class="p-4 text-right opacity-20">➔</td></tr>
+                    <tr class="active:bg-blue-900 cursor-pointer" onclick="verJugador('Thomas Narváez', '--', 'Por definir', 'logo.png')"><td class="p-4 text-xs opacity-50">#</td><td class="p-4 uppercase text-white/70 italic">Thomas Narváez</td><td class="p-4 text-right opacity-20">➔</td></tr>
+                    <tr class="active:bg-blue-900 cursor-pointer" onclick="verJugador('Victor Gutiérrez', '--', 'Por definir', 'logo.png')"><td class="p-4 text-xs opacity-50">#</td><td class="p-4 uppercase text-white/70 italic">Victor Gutiérrez</td><td class="p-4 text-right opacity-20">➔</td></tr>
                 </tbody>
             </table>
         </div>
