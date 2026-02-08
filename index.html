@@ -16,10 +16,10 @@
         html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="bg-slate-900 text-white font-sans">
+<body class="bg-slate-900 text-white font-sans overflow-x-hidden">
 
     <header class="h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-900 via-slate-900 to-slate-900 p-6 text-center">
-        <img src="logo.png" class="w-40 h-40 mb-10 drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]">
+        <img src="logo.png" class="w-44 h-44 mb-8 drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">
         
         <h1 class="texto-vibrante text-5xl md:text-7xl font-black italic uppercase leading-none tracking-tighter text-orange-500 mb-4">
             BIENVENIDO
@@ -31,39 +31,39 @@
             Cachorros de Miranda
         </p>
 
-        <a href="#historia" class="bg-white text-blue-900 font-black py-4 px-12 rounded-full uppercase tracking-widest text-sm shadow-2xl hover:bg-orange-500 hover:text-white transition-all">
-            Entrar al Sitio
+        <a href="#historia" class="bg-white text-blue-900 font-black py-4 px-12 rounded-full uppercase tracking-widest text-sm shadow-2xl hover:scale-105 transition-all">
+            Ver Roster
         </a>
     </header>
 
-    <main id="historia" class="py-20 px-6 max-w-4xl mx-auto space-y-16 text-center">
-        <div class="bg-slate-800 p-10 rounded-[3rem] border-b-8 border-blue-500 shadow-2xl">
-            <h3 class="text-4xl font-black italic uppercase mb-6 text-blue-400">Historia</h3>
-            <p class="text-slate-300 leading-relaxed text-lg">
+    <main id="historia" class="py-20 px-6 max-w-4xl mx-auto space-y-10">
+        <div class="bg-slate-800/80 p-10 rounded-[2.5rem] border-b-4 border-blue-500 shadow-2xl text-center">
+            <h3 class="text-3xl font-black italic uppercase mb-4 text-blue-400 tracking-tighter">Historia</h3>
+            <p class="text-slate-300 leading-relaxed text-lg italic">
                 "Formando las futuras estrellas del béisbol venezolano con disciplina y pasión."
             </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-slate-800 p-8 rounded-3xl border-t-4 border-blue-500">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-slate-800/80 p-8 rounded-3xl border-t-4 border-blue-500 text-center">
                 <h4 class="text-xl font-black uppercase italic text-blue-400 mb-2">Misión</h4>
                 <p class="text-slate-400 text-sm">Desarrollar el talento técnico y humano de nuestros niños.</p>
             </div>
-            <div class="bg-slate-800 p-8 rounded-3xl border-t-4 border-orange-500">
+            <div class="bg-slate-800/80 p-8 rounded-3xl border-t-4 border-orange-500 text-center">
                 <h4 class="text-xl font-black uppercase italic text-orange-400 mb-2">Visión</h4>
-                <p class="text-slate-400 text-sm">Ser la organización referente en Miranda.</p>
+                <p class="text-slate-400 text-sm">Ser la organización referente en Miranda por su excelencia.</p>
             </div>
         </div>
     </main>
 
-    <section class="py-20">
-        <div class="max-w-md mx-auto px-4 text-left">
+    <section class="pb-32 pt-10 px-4">
+        <div class="max-w-md mx-auto">
             <div class="bg-slate-800 rounded-3xl shadow-2xl border-l-8 border-orange-500 overflow-hidden">
-                <div class="p-6 border-b border-slate-700">
-                    <h2 class="text-orange-400 text-2xl font-black uppercase italic">Roster Oficial</h2>
+                <div class="p-6 border-b border-slate-700 bg-slate-800">
+                    <h2 class="text-orange-400 text-2xl font-black uppercase italic tracking-tighter">Roster Oficial</h2>
                 </div>
                 <table class="w-full">
-                    <tbody id="lista-jugadores" class="divide-y divide-slate-700 bg-slate-700/30 font-bold uppercase text-sm">
+                    <tbody id="lista-jugadores" class="divide-y divide-slate-700 bg-slate-700/20 text-left font-bold uppercase text-xs">
                         </tbody>
                 </table>
             </div>
@@ -71,6 +71,7 @@
     </section>
 
     <script>
+        // Lista de tus 12 jugadores
         const jugadores = [
             "Abrían Sánchez", "Andruth Garcia", "Dirimo Montero", "Jensen Sandrea", 
             "Joshua Cova", "Juan Flores", "Luciander Valero", "Lyan Olivares", 
@@ -80,7 +81,10 @@
         const tbody = document.getElementById('lista-jugadores');
         jugadores.forEach(nombre => {
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td class="p-5 text-orange-500 w-10">#</td><td class="p-5 text-white tracking-wide">${nombre}</td>`;
+            tr.innerHTML = `
+                <td class="p-5 text-orange-500 w-10">#</td>
+                <td class="p-5 text-white tracking-widest">${nombre}</td>
+            `;
             tbody.appendChild(tr);
         });
     </script>
