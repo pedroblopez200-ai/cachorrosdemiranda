@@ -6,26 +6,28 @@
     <title>Cachorros de Miranda B.B.C.</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-900 text-white font-sans">
-    <nav class="bg-blue-900 p-4 border-b-4 border-orange-500 sticky top-0 z-50 text-center">
+<body class="bg-slate-900 text-white font-sans text-center">
+    <nav class="bg-blue-900 p-4 border-b-4 border-orange-500 sticky top-0 z-50 shadow-2xl">
         <div class="container mx-auto flex flex-col items-center gap-2">
-            <img src="Imagen generada por Géminis srdxi0srdxi0srdx.png" alt="Logo" class="w-20 h-20">
-            <span class="text-xl font-black italic uppercase">Cachorros de Miranda</span>
+            <img src="logotipo.png.jpg" alt="Logo Cachorros" class="w-24 h-24 drop-shadow-lg rounded-full">
+            <span class="text-xl font-black italic uppercase tracking-tighter">Cachorros de Miranda</span>
         </div>
     </nav>
-    <header class="py-12 text-center bg-gradient-to-b from-blue-800 to-slate-900 px-4">
-        <h1 class="text-4xl font-black italic mb-4 uppercase text-orange-400">¡Garra y Pasión!</h1>
-        <p class="text-white font-bold tracking-widest uppercase">Sitio Oficial - Estado Miranda</p>
+    <header class="py-12 bg-gradient-to-b from-blue-800 to-slate-900 px-4">
+        <h1 class="text-5xl font-black italic mb-4 uppercase text-orange-400 drop-shadow-md">¡Garra y Pasión!</h1>
+        <p class="font-bold tracking-widest uppercase opacity-80 text-sm">Sitio Oficial - Estado Miranda</p>
     </header>
-    <section class="max-w-md mx-auto p-8 bg-white rounded-3xl my-6 shadow-2xl mx-4 text-gray-800">
-        <h2 class="text-blue-900 text-2xl font-black text-center mb-6 uppercase italic border-b-2 border-orange-500 pb-2">Inscripciones</h2>
-        <form class="space-y-4">
-            <input type="text" placeholder="Nombre del Jugador" class="w-full p-4 bg-gray-100 border-2 border-transparent rounded-xl outline-none focus:border-orange-500">
-            <input type="tel" placeholder="Teléfono del Representante" class="w-full p-4 bg-gray-100 border-2 border-transparent rounded-xl outline-none focus:border-orange-500">
-            <button type="button" class="w-full bg-orange-500 text-white font-black py-4 rounded-xl shadow-lg uppercase active:scale-95 transition-transform">Enviar Datos</button>
-        </form>
+    <section class="max-w-md mx-auto p-8 bg-white rounded-3xl my-6 shadow-2xl mx-4 text-gray-800 border-t-8 border-orange-500">
+        <h2 class="text-blue-900 text-2xl font-black mb-6 uppercase italic border-b-2 border-orange-500 pb-2 text-center">Inscripciones</h2>
+        <div class="space-y-4 text-left">
+            <label class="block font-bold text-sm text-gray-500">Nombre del Jugador</label>
+            <input type="text" placeholder="Ej: Juan Pérez" class="w-full p-4 bg-gray-100 rounded-xl outline-none border-2 border-transparent focus:border-orange-500 text-gray-800">
+            <label class="block font-bold text-sm text-gray-500">Teléfono</label>
+            <input type="tel" placeholder="0412-0000000" class="w-full p-4 bg-gray-100 rounded-xl outline-none border-2 border-transparent focus:border-orange-500 text-gray-800">
+            <button class="w-full bg-orange-500 text-white font-black py-4 rounded-xl shadow-lg uppercase mt-4 active:scale-95 transition-all">Enviar Datos</button>
+        </div>
     </section>
-    <footer class="p-8 text-center opacity-40 text-sm">
+    <footer class="p-8 opacity-40 text-xs">
         <p>Cachorros de Miranda B.B.C. &copy; 2026</p>
     </footer>
 </body>
