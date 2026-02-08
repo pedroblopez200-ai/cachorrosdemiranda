@@ -6,120 +6,103 @@
     <title>Cachorros de Miranda B.B.C.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(15, 23, 42, 0.98); backdrop-filter: blur(15px); }
-        @keyframes pop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .animate-pop { animation: pop 0.3s ease-out; }
+        /* Ocultamos el modal por defecto con !important para que no falle */
+        #playerModal { display: none !important; }
+        #playerModal.flex { display: flex !important; }
         
         @keyframes vibrarGlow {
-            0% { text-shadow: 0 0 10px rgba(249, 115, 22, 0.4); transform: scale(1); }
+            0%, 100% { text-shadow: 0 0 10px rgba(249, 115, 22, 0.4); transform: scale(1); }
             50% { text-shadow: 0 0 30px rgba(249, 115, 22, 0.8); transform: scale(1.02); }
-            100% { text-shadow: 0 0 10px rgba(249, 115, 22, 0.4); transform: scale(1); }
         }
         .texto-vibrante { animation: vibrarGlow 3s infinite ease-in-out; }
         html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="bg-slate-900 text-white font-sans overflow-x-hidden">
+<body class="bg-slate-900 text-white font-sans">
 
-    <header class="h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-900 via-slate-900 to-slate-900 p-6 text-center">
-        <img src="logo.png" class="w-44 h-44 mb-8 drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-        <h1 class="texto-vibrante text-5xl md:text-7xl font-black italic uppercase leading-none tracking-tighter text-orange-500 mb-4">BIENVENIDO</h1>
-        <p class="text-xl md:text-2xl font-bold uppercase tracking-[0.2em] text-white mb-2">Al Sitio Oficial de los</p>
-        <p class="text-3xl md:text-5xl font-black italic uppercase text-blue-400 mb-12">Cachorros de Miranda</p>
-        <a href="#roster-section" class="bg-white text-blue-900 font-black py-4 px-12 rounded-full uppercase tracking-widest text-sm shadow-2xl hover:scale-105 transition-all">Ver Roster</a>
+    <header class="h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-900 to-slate-900 text-center p-6">
+        <img src="logo.png" class="w-40 h-40 mb-8 drop-shadow-2xl">
+        <h1 class="texto-vibrante text-5xl md:text-7xl font-black italic text-orange-500 uppercase">BIENVENIDO</h1>
+        <p class="text-xl font-bold uppercase tracking-widest mt-2">Al Sitio Oficial de los</p>
+        <p class="text-3xl md:text-5xl font-black text-blue-400 uppercase italic mb-10">Cachorros de Miranda</p>
+        <a href="#roster" class="bg-white text-blue-900 font-black py-4 px-10 rounded-full uppercase shadow-xl hover:scale-110 transition">Ver el Equipo</a>
     </header>
 
-    <main class="py-20 px-6 max-w-4xl mx-auto space-y-10">
-        <div class="bg-slate-800/80 p-10 rounded-[2.5rem] border-b-4 border-blue-500 shadow-2xl text-center">
-            <h3 class="text-3xl font-black italic uppercase mb-4 text-blue-400">Historia</h3>
-            <p class="text-slate-300 leading-relaxed text-lg italic">"Formando las futuras estrellas del béisbol venezolano con disciplina y pasión."</p>
+    <section class="py-20 px-6 max-w-4xl mx-auto space-y-10">
+        <div class="bg-slate-800 p-8 rounded-[2rem] border-b-4 border-blue-500 text-center">
+            <h2 class="text-3xl font-black text-blue-400 uppercase italic mb-4">Historia</h2>
+            <p class="text-slate-300 italic">"Formando las futuras estrellas del béisbol venezolano con disciplina y pasión."</p>
         </div>
         <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-slate-800/80 p-8 rounded-3xl border-t-4 border-blue-500 text-center">
-                <h4 class="text-xl font-black uppercase italic text-blue-400 mb-2">Misión</h4>
-                <p class="text-slate-400 text-sm">Desarrollar el talento técnico y humano de nuestros niños.</p>
+            <div class="bg-slate-800 p-6 rounded-2xl border-t-4 border-blue-500 text-center">
+                <h3 class="font-black text-blue-400 uppercase">Misión</h3>
+                <p class="text-sm text-slate-400">Desarrollar el talento técnico y humano de nuestros niños.</p>
             </div>
-            <div class="bg-slate-800/80 p-8 rounded-3xl border-t-4 border-orange-500 text-center">
-                <h4 class="text-xl font-black uppercase italic text-orange-400 mb-2">Visión</h4>
-                <p class="text-slate-400 text-sm">Ser la organización referente en Miranda por su excelencia.</p>
-            </div>
-        </div>
-    </main>
-
-    <section id="roster-section" class="pb-32 pt-10 px-4">
-        <div class="max-w-md mx-auto">
-            <div class="bg-slate-800 rounded-3xl shadow-2xl border-l-8 border-orange-500 overflow-hidden">
-                <div class="p-6 border-b border-slate-700 bg-slate-800 text-center">
-                    <h2 class="text-orange-400 text-2xl font-black uppercase italic">Roster Oficial</h2>
-                </div>
-                <table class="w-full">
-                    <tbody id="lista-jugadores" class="divide-y divide-slate-700 bg-slate-700/20 text-left font-bold uppercase text-xs">
-                        </tbody>
-                </table>
+            <div class="bg-slate-800 p-6 rounded-2xl border-t-4 border-orange-500 text-center">
+                <h3 class="font-black text-orange-400 uppercase">Visión</h3>
+                <p class="text-sm text-slate-400">Ser la organización referente en Miranda por su excelencia.</p>
             </div>
         </div>
     </section>
 
-    <div id="playerModal" class="modal flex items-center justify-center p-4" onclick="this.style.display='none'">
-        <div class="bg-white text-gray-800 rounded-3xl overflow-hidden max-w-sm w-full shadow-2xl animate-pop" onclick="event.stopPropagation()">
+    <section id="roster" class="pb-32 px-4">
+        <div class="max-w-md mx-auto bg-slate-800 rounded-3xl shadow-2xl border-l-8 border-orange-500 overflow-hidden">
+            <div class="p-6 border-b border-slate-700 text-center">
+                <h2 class="text-orange-400 text-2xl font-black uppercase italic">Roster Oficial</h2>
+            </div>
+            <table class="w-full">
+                <tbody id="tabla-jugadores" class="divide-y divide-slate-700 bg-slate-700/20 uppercase text-xs font-bold">
+                    </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div id="playerModal" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md items-center justify-center p-4" onclick="this.classList.remove('flex')">
+        <div class="bg-white text-slate-900 rounded-3xl overflow-hidden max-w-sm w-full shadow-2xl animate-pop" onclick="event.stopPropagation()">
             <div class="bg-blue-900 p-8 flex justify-center border-b-8 border-orange-500">
-                <img id="p-img" src="logo.png" class="w-48 h-48 object-cover rounded-2xl border-4 border-white shadow-xl bg-slate-200">
+                <img id="p-img" src="logo.png" class="w-44 h-44 object-cover rounded-2xl border-4 border-white">
             </div>
             <div class="p-6 text-center">
-                <h3 id="p-nombre" class="text-3xl font-black text-blue-900 uppercase italic">--</h3>
-                <p class="text-orange-500 font-bold text-[10px] tracking-widest uppercase mb-4 italic">Cachorros de Miranda</p>
+                <h3 id="p-nombre" class="text-3xl font-black text-blue-900 italic uppercase">--</h3>
+                <p class="text-orange-500 font-bold text-[10px] uppercase mb-4 tracking-tighter">Cachorros de Miranda B.B.C</p>
                 <div class="grid grid-cols-2 gap-4 border-y py-4 mb-6">
-                    <div class="border-r border-gray-100">
-                        <p class="text-[10px] text-gray-400 font-black uppercase">Edad</p>
-                        <p id="p-edad" class="font-black text-2xl text-blue-900">--</p>
-                    </div>
-                    <div>
-                        <p class="text-[10px] text-gray-400 font-black uppercase">Posiciones</p>
-                        <p id="p-pos" class="font-black text-lg text-blue-900 leading-tight">--</p>
-                    </div>
+                    <div><p class="text-[10px] text-gray-400 uppercase">Edad</p><p id="p-edad" class="font-black text-2xl text-blue-900">--</p></div>
+                    <div><p class="text-[10px] text-gray-400 uppercase">Posición</p><p id="p-pos" class="font-black text-lg text-blue-900 leading-tight">--</p></div>
                 </div>
-                <button onclick="document.getElementById('playerModal').style.display='none'" class="w-full bg-slate-900 text-white py-4 rounded-xl font-black uppercase text-xs">Cerrar Ficha</button>
+                <button onclick="document.getElementById('playerModal').classList.remove('flex')" class="w-full bg-slate-900 text-white py-4 rounded-xl font-black uppercase text-xs">Cerrar</button>
             </div>
         </div>
     </div>
 
     <script>
         const jugadores = [
-            {n: 'Abrían Sánchez', e: '9 Años', p: 'CF / 1B / P', f: 'abrian.png'},
-            {n: 'Andruth Garcia', e: '8 Años', p: '2B / SS / LF / P', f: 'andruth.png'},
-            {n: 'Dirimo Montero', e: '11 Años', p: '3B / 2B / P', f: 'dirimo.png'},
-            {n: 'Jensen Sandrea', e: '11 Años', p: 'SS / P', f: 'jensen.png'},
-            {n: 'Joshua Cova', e: '7 Años', p: 'RF / 2B / P', f: 'joshua.png'},
-            {n: 'Juan Flores', e: '11 Años', p: '1B / C / 3B', f: 'juan.png'},
-            {n: 'Luciander Valero', e: '8 Años', p: 'LF / 1B / P', f: 'luciander.png'},
-            {n: 'Lyan Olivares', e: '11 Años', p: '2B / P', f: 'lyan.png'},
-            {n: 'Martin López', e: '7 Años', p: 'P / 3B', f: 'martin.png'},
-            {n: 'Sandith Garcia', e: '10 Años', p: 'C / P / CF', f: 'sandith.png'},
-            {n: 'Thomas Narváez', e: '9 Años', p: 'RF / LF', f: 'thomas.png'},
-            {n: 'Victor Gutiérrez', e: '9 Años', p: 'P / 1B / CF', f: 'victor.png'}
+            {n:'Abrían Sánchez', e:'9 Años', p:'CF / 1B / P', f:'abrian.png'},
+            {n:'Andruth Garcia', e:'8 Años', p:'2B/SS/LF/P', f:'andruth.png'},
+            {n:'Dirimo Montero', e:'11 Años', p:'3B / 2B / P', f:'dirimo.png'},
+            {n:'Jensen Sandrea', e:'11 Años', p:'SS / P', f:'jensen.png'},
+            {n:'Joshua Cova', e:'7 Años', p:'RF / 2B / P', f:'joshua.png'},
+            {n:'Juan Flores', e:'11 Años', p:'1B / C / 3B', f:'juan.png'},
+            {n:'Luciander Valero', e:'8 Años', p:'LF / 1B / P', f:'luciander.png'},
+            {n:'Lyan Olivares', e:'11 Años', p:'2B / P', f:'lyan.png'},
+            {n:'Martin López', e:'7 Años', p:'P / 3B', f:'martin.png'},
+            {n:'Sandith Garcia', e:'10 Años', p:'C / P / CF', f:'sandith.png'},
+            {n:'Thomas Narváez', e:'9 Años', p:'RF / LF', f:'thomas.png'},
+            {n:'Victor Gutiérrez', e:'9 Años', p:'P / 1B / CF', f:'victor.png'}
         ];
 
-        const tbody = document.getElementById('lista-jugadores');
-        
+        const lista = document.getElementById('tabla-jugadores');
         jugadores.forEach(j => {
             const tr = document.createElement('tr');
-            tr.className = "active:bg-blue-900 cursor-pointer transition-colors border-b border-slate-700/50";
-            
-            // Forzamos el evento clic con una función directa
-            tr.onclick = function() {
+            tr.className = "active:bg-blue-900 cursor-pointer transition-all";
+            tr.onclick = () => {
                 document.getElementById('p-nombre').innerText = j.n;
                 document.getElementById('p-edad').innerText = j.e;
                 document.getElementById('p-pos').innerText = j.p;
                 document.getElementById('p-img').src = j.f;
-                document.getElementById('playerModal').style.display = 'flex';
+                document.getElementById('playerModal').classList.add('flex');
             };
-
-            tr.innerHTML = `
-                <td class="p-5 text-orange-500 w-10">#</td>
-                <td class="p-5 text-white tracking-widest">${j.n}</td>
-                <td class="p-5 text-right text-orange-500 opacity-50">➔</td>
-            `;
-            tbody.appendChild(tr);
+            tr.innerHTML = `<td class="p-5 text-orange-500 w-10">#</td><td class="p-5 text-white">${j.n}</td><td class="p-5 text-right text-orange-500">➔</td>`;
+            lista.appendChild(tr);
         });
     </script>
 </body>
