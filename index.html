@@ -14,6 +14,8 @@
         }
         .texto-vibrante { animation: vibrarGlow 3s infinite ease-in-out; }
         html { scroll-behavior: smooth; }
+        .card-jugador { transition: all 0.3s ease; }
+        .card-jugador:hover { transform: translateY(-10px); }
     </style>
 </head>
 <body class="bg-slate-900 text-white font-sans">
@@ -21,82 +23,58 @@
     <header class="h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-900 to-slate-900 text-center p-6">
         <img src="logo.png" class="w-40 h-40 mb-8 drop-shadow-2xl">
         <h1 class="texto-vibrante text-5xl md:text-7xl font-black italic text-orange-500 uppercase">BIENVENIDO</h1>
-        <p class="text-xl font-bold uppercase tracking-widest mt-2">Al Sitio Oficial de los</p>
+        <p class="text-xl font-bold uppercase tracking-widest mt-2">Sitio Oficial de los</p>
         <p class="text-3xl md:text-5xl font-black text-blue-400 uppercase italic mb-10">Cachorros de Miranda</p>
-        <a href="#proximo-juego" class="bg-white text-blue-900 font-black py-4 px-10 rounded-full uppercase shadow-xl hover:scale-110 transition">Ver Calendario</a>
+        <a href="#proximo-juego" class="bg-white text-blue-900 font-black py-4 px-10 rounded-full uppercase shadow-xl hover:scale-110 transition">Ver Calendario y Equipo</a>
     </header>
 
-    <section class="py-20 px-6 max-w-4xl mx-auto space-y-10">
-        <div class="bg-slate-800 p-8 rounded-[2rem] border-b-4 border-blue-500 text-center">
-            <h2 class="text-3xl font-black text-blue-400 uppercase italic mb-4">Historia</h2>
-            <p class="text-slate-300 italic">"Formando las futuras estrellas del béisbol venezolano con disciplina y pasión."</p>
-        </div>
-
-        <div id="proximo-juego" class="bg-gradient-to-r from-blue-800 to-blue-600 p-1 rounded-[2.5rem] shadow-2xl overflow-hidden transform hover:scale-[1.02] transition-transform">
-            <div class="bg-slate-900 rounded-[2.4rem] p-8 border-2 border-blue-400/20 text-center">
+    <section class="py-12 px-6 max-w-6xl mx-auto space-y-10">
+        
+        <div id="proximo-juego" class="bg-gradient-to-r from-blue-800 to-blue-600 p-1 rounded-[2.5rem] shadow-2xl overflow-hidden">
+            <div class="bg-slate-900 rounded-[2.4rem] p-8 text-center border-2 border-blue-400/20">
                 <span class="bg-orange-500 text-slate-900 text-[10px] font-black px-4 py-1 rounded-full uppercase tracking-widest">Próximo Desafío</span>
-                
                 <div class="flex items-center justify-around my-8">
                     <div class="flex flex-col items-center">
                         <img src="logo.png" class="w-16 h-16 md:w-24 md:h-24 drop-shadow-lg">
-                        <p class="mt-2 text-xs font-black italic tracking-tighter">CACHORROS</p>
+                        <p class="mt-2 text-xs font-black italic">CACHORROS</p>
                     </div>
-                    
                     <div class="text-center">
-                        <p class="text-4xl md:text-6xl font-black italic text-orange-500 drop-shadow-md">VS</p>
+                        <p class="text-4xl md:text-6xl font-black italic text-orange-500">VS</p>
                         <div class="h-1 w-10 bg-orange-500 mx-auto rounded-full mt-2"></div>
                     </div>
-                    
                     <div class="flex flex-col items-center">
                         <div class="w-16 h-16 md:w-24 md:h-24 bg-red-600 rounded-full flex items-center justify-center text-4xl shadow-xl border-4 border-red-500">🐦</div>
-                        <p class="mt-2 text-xs font-black italic tracking-tighter uppercase">Cardenales</p>
+                        <p class="mt-2 text-xs font-black italic uppercase">Cardenales</p>
                     </div>
                 </div>
-
-                <div class="bg-slate-800/50 rounded-2xl p-6 border border-white/5">
-                    <p class="text-blue-400 font-bold text-sm tracking-widest uppercase">Jueves 12 de Febrero</p>
-                    <p class="text-4xl font-black text-white mt-1">4:30 PM</p>
-                    <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-tight">Estadio Municipal de Miranda • Temporada Regular</p>
+                <div class="bg-slate-800/50 rounded-2xl p-6">
+                    <p class="text-blue-400 font-bold text-sm uppercase">Jueves 12 de Febrero - 4:30 PM</p>
+                    <p class="text-xs text-slate-400 mt-2 uppercase">Estadio Municipal de Miranda</p>
                 </div>
             </div>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-slate-800 p-6 rounded-2xl border-t-4 border-blue-500 text-center">
-                <h3 class="font-black text-blue-400 uppercase">Misión</h3>
-                <p class="text-sm text-slate-400">Desarrollar el talento técnico y humano de nuestros niños.</p>
-            </div>
-            <div class="bg-slate-800 p-6 rounded-2xl border-t-4 border-orange-500 text-center">
-                <h3 class="font-black text-orange-400 uppercase">Visión</h3>
-                <p class="text-sm text-slate-400">Ser la organización referente en Miranda por su excelencia.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="roster" class="pb-32 px-4">
-        <div class="max-w-md mx-auto bg-slate-800 rounded-3xl shadow-2xl border-l-8 border-orange-500 overflow-hidden">
-            <div class="p-6 border-b border-slate-700 text-center">
-                <h2 class="text-orange-400 text-2xl font-black uppercase italic">Roster Oficial</h2>
-            </div>
-            <table class="w-full">
-                <tbody id="tabla-jugadores" class="divide-y divide-slate-700 bg-slate-700/20 uppercase text-xs font-bold"></tbody>
-            </table>
+        <div id="roster" class="pt-10 text-center">
+            <h2 class="text-4xl font-black text-blue-400 uppercase italic mb-10 border-b-4 border-orange-500 inline-block pb-2">Roster de Estrellas</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="contenedor-jugadores">
+                </div>
         </div>
     </section>
 
     <div id="playerModal" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md items-center justify-center p-4" onclick="this.classList.remove('flex')">
-        <div class="bg-white text-slate-900 rounded-3xl overflow-hidden max-w-sm w-full shadow-2xl animate-pop" onclick="event.stopPropagation()">
+        <div class="bg-white text-slate-900 rounded-3xl overflow-hidden max-w-sm w-full shadow-2xl" onclick="event.stopPropagation()">
             <div class="bg-blue-900 p-8 flex justify-center border-b-8 border-orange-500">
-                <img id="p-img" src="logo.png" class="w-44 h-44 object-cover rounded-2xl border-4 border-white">
+                <img id="p-img" src="logo.png" class="w-44 h-44 object-cover rounded-2xl border-4 border-white shadow-xl">
             </div>
             <div class="p-6 text-center">
-                <h3 id="p-nombre" class="text-3xl font-black text-blue-900 italic uppercase">--</h3>
-                <p class="text-orange-500 font-bold text-[10px] uppercase mb-4 tracking-tighter">Cachorros de Miranda B.B.C</p>
-                <div class="grid grid-cols-2 gap-4 border-y py-4 mb-6">
-                    <div><p class="text-[10px] text-gray-400 uppercase">Edad</p><p id="p-edad" class="font-black text-2xl text-blue-900">--</p></div>
-                    <div><p class="text-[10px] text-gray-400 uppercase">Posición</p><p id="p-pos" class="font-black text-lg text-blue-900 leading-tight">--</p></div>
+                <h3 id="p-nombre" class="text-3xl font-black text-blue-900 italic uppercase leading-none">--</h3>
+                <p id="p-pos" class="text-orange-500 font-bold text-sm uppercase mt-2">--</p>
+                <div class="mt-6 border-t pt-4">
+                    <p class="text-[10px] text-gray-400 uppercase">Categoría</p>
+                    <p id="p-edad" class="font-black text-xl text-blue-900 uppercase">--</p>
                 </div>
-                <button onclick="document.getElementById('playerModal').classList.remove('flex')" class="w-full bg-slate-900 text-white py-4 rounded-xl font-black uppercase text-xs">Cerrar</button>
+                <button onclick="document.getElementById('playerModal').classList.remove('flex')" class="mt-6 w-full bg-slate-900 text-white py-4 rounded-xl font-black uppercase text-xs">Cerrar</button>
             </div>
         </div>
     </div>
@@ -114,4 +92,29 @@
             {n:'Martin López', e:'7 Años', p:'P / 3B', f:'martin.png'},
             {n:'Sandith Garcia', e:'10 Años', p:'C / P / CF', f:'sandith.png'},
             {n:'Thomas Narváez', e:'9 Años', p:'RF / LF', f:'thomas.png'},
-            {n:'Victor Gutiérrez', e:'9 Años', p:'P / 1B / CF', f
+            {n:'Victor Gutiérrez', e:'9 Años', p:'P / 1B / CF', f:'victor.png'}
+        ];
+
+        const contenedor = document.getElementById('contenedor-jugadores');
+        
+        jugadores.forEach(j => {
+            const div = document.createElement('div');
+            div.className = "card-jugador bg-slate-800 rounded-3xl p-4 border-b-4 border-blue-500 cursor-pointer shadow-lg";
+            div.onclick = () => {
+                document.getElementById('p-nombre').innerText = j.n;
+                document.getElementById('p-edad').innerText = j.e;
+                document.getElementById('p-pos').innerText = j.p;
+                document.getElementById('p-img').src = j.f;
+                document.getElementById('playerModal').classList.add('flex');
+            };
+            
+            div.innerHTML = `
+                <img src="${j.f}" class="w-full h-40 object-cover rounded-2xl mb-4 border-2 border-slate-700" onerror="this.src='logo.png'">
+                <h3 class="font-black uppercase italic text-sm text-white">${j.n}</h3>
+                <p class="text-[10px] text-orange-500 font-bold uppercase mt-1">${j.p}</p>
+            `;
+            contenedor.appendChild(div);
+        });
+    </script>
+</body>
+</html>
