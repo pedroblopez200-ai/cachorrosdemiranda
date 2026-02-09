@@ -6,10 +6,8 @@
     <title>Cachorros de Miranda B.B.C.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Ocultamos el modal por defecto con !important para que no falle */
         #playerModal { display: none !important; }
         #playerModal.flex { display: flex !important; }
-        
         @keyframes vibrarGlow {
             0%, 100% { text-shadow: 0 0 10px rgba(249, 115, 22, 0.4); transform: scale(1); }
             50% { text-shadow: 0 0 30px rgba(249, 115, 22, 0.8); transform: scale(1.02); }
@@ -25,7 +23,7 @@
         <h1 class="texto-vibrante text-5xl md:text-7xl font-black italic text-orange-500 uppercase">BIENVENIDO</h1>
         <p class="text-xl font-bold uppercase tracking-widest mt-2">Al Sitio Oficial de los</p>
         <p class="text-3xl md:text-5xl font-black text-blue-400 uppercase italic mb-10">Cachorros de Miranda</p>
-        <a href="#roster" class="bg-white text-blue-900 font-black py-4 px-10 rounded-full uppercase shadow-xl hover:scale-110 transition">Ver el Equipo</a>
+        <a href="#proximo-juego" class="bg-white text-blue-900 font-black py-4 px-10 rounded-full uppercase shadow-xl hover:scale-110 transition">Ver Calendario</a>
     </header>
 
     <section class="py-20 px-6 max-w-4xl mx-auto space-y-10">
@@ -33,6 +31,36 @@
             <h2 class="text-3xl font-black text-blue-400 uppercase italic mb-4">Historia</h2>
             <p class="text-slate-300 italic">"Formando las futuras estrellas del béisbol venezolano con disciplina y pasión."</p>
         </div>
+
+        <div id="proximo-juego" class="bg-gradient-to-r from-blue-800 to-blue-600 p-1 rounded-[2.5rem] shadow-2xl overflow-hidden transform hover:scale-[1.02] transition-transform">
+            <div class="bg-slate-900 rounded-[2.4rem] p-8 border-2 border-blue-400/20 text-center">
+                <span class="bg-orange-500 text-slate-900 text-[10px] font-black px-4 py-1 rounded-full uppercase tracking-widest">Próximo Desafío</span>
+                
+                <div class="flex items-center justify-around my-8">
+                    <div class="flex flex-col items-center">
+                        <img src="logo.png" class="w-16 h-16 md:w-24 md:h-24 drop-shadow-lg">
+                        <p class="mt-2 text-xs font-black italic tracking-tighter">CACHORROS</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <p class="text-4xl md:text-6xl font-black italic text-orange-500 drop-shadow-md">VS</p>
+                        <div class="h-1 w-10 bg-orange-500 mx-auto rounded-full mt-2"></div>
+                    </div>
+                    
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 md:w-24 md:h-24 bg-red-600 rounded-full flex items-center justify-center text-4xl shadow-xl border-4 border-red-500">🐦</div>
+                        <p class="mt-2 text-xs font-black italic tracking-tighter uppercase">Cardenales</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 rounded-2xl p-6 border border-white/5">
+                    <p class="text-blue-400 font-bold text-sm tracking-widest uppercase">Jueves 12 de Febrero</p>
+                    <p class="text-4xl font-black text-white mt-1">4:30 PM</p>
+                    <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-tight">Estadio Municipal de Miranda • Temporada Regular</p>
+                </div>
+            </div>
+        </div>
+
         <div class="grid md:grid-cols-2 gap-6">
             <div class="bg-slate-800 p-6 rounded-2xl border-t-4 border-blue-500 text-center">
                 <h3 class="font-black text-blue-400 uppercase">Misión</h3>
@@ -51,8 +79,7 @@
                 <h2 class="text-orange-400 text-2xl font-black uppercase italic">Roster Oficial</h2>
             </div>
             <table class="w-full">
-                <tbody id="tabla-jugadores" class="divide-y divide-slate-700 bg-slate-700/20 uppercase text-xs font-bold">
-                    </tbody>
+                <tbody id="tabla-jugadores" class="divide-y divide-slate-700 bg-slate-700/20 uppercase text-xs font-bold"></tbody>
             </table>
         </div>
     </section>
@@ -87,23 +114,4 @@
             {n:'Martin López', e:'7 Años', p:'P / 3B', f:'martin.png'},
             {n:'Sandith Garcia', e:'10 Años', p:'C / P / CF', f:'sandith.png'},
             {n:'Thomas Narváez', e:'9 Años', p:'RF / LF', f:'thomas.png'},
-            {n:'Victor Gutiérrez', e:'9 Años', p:'P / 1B / CF', f:'victor.png'}
-        ];
-
-        const lista = document.getElementById('tabla-jugadores');
-        jugadores.forEach(j => {
-            const tr = document.createElement('tr');
-            tr.className = "active:bg-blue-900 cursor-pointer transition-all";
-            tr.onclick = () => {
-                document.getElementById('p-nombre').innerText = j.n;
-                document.getElementById('p-edad').innerText = j.e;
-                document.getElementById('p-pos').innerText = j.p;
-                document.getElementById('p-img').src = j.f;
-                document.getElementById('playerModal').classList.add('flex');
-            };
-            tr.innerHTML = `<td class="p-5 text-orange-500 w-10">#</td><td class="p-5 text-white">${j.n}</td><td class="p-5 text-right text-orange-500">➔</td>`;
-            lista.appendChild(tr);
-        });
-    </script>
-</body>
-</html>
+            {n:'Victor Gutiérrez', e:'9 Años', p:'P / 1B / CF', f
